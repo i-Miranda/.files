@@ -129,7 +129,7 @@ nnoremap <leader>to :tabonly<CR>
 
 nnoremap <leader>ff :find<space>
 nnoremap <leader>fb :ls<CR>:b<space>
-nnoremap <leader>fo :Lexplore<CR>
+nnoremap <leader>fo :Lexplore<CR>:wincmd L<CR>21<c-w><
 nnoremap <leader>fO :Explore<CR>
 
 nnoremap <leader>gd <c-]>
@@ -145,8 +145,8 @@ inoremap jj <esc>
 
 "VIMSCRIPT {{{
 augroup filetype_vim
-    autocmd FileType vim setlocal foldmethod=marker
-augroup END
+    autocmd filetype vim setlocal foldmethod=marker
+augroup end
 
 augroup help_vert
     autocmd FileType help wincmd L
@@ -187,14 +187,14 @@ set statusline+=\ %y\ ascii:\%b\ hex:\0x%B\ %l\:%c\ %p%%
 set laststatus=2
 " }}}
 
-" NETRW {{{
+" netrw {{{
 " FILE BROWSING:
 " Tweaks for browsing:
 let g:netrw_banner=0  "disable banner
 let g:netrw_browse_split=4 "open in prior window
 let g:netrw_altv=1 "open splits to the right
 let g:netrw_liststyle=3 "tree view
-let g:netrw_winsize=-40
+let g:netrw_winsize=-20
 let g:netrw_list_hide=netrw_gitignore#Hide()
 " let g:netrw_list_hide=',\(^\|\s\s\)\zs\.\S\+'
     " NOW WE CAN:
