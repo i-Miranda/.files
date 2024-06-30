@@ -192,7 +192,7 @@ set laststatus=2
 " Tweaks for browsing:
 let g:netrw_banner=0  "disable banner
 let g:netrw_browse_split=4 "open in prior window
-let g:netrw_altv=1 "open splits to the right
+let g:netrw_altv=0 "open splits to the left
 let g:netrw_liststyle=3 "tree view
 let g:netrw_winsize=-20
 let g:netrw_list_hide=netrw_gitignore#Hide()
