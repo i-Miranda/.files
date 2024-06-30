@@ -11,7 +11,6 @@
 set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8
-set ttyfast
 
 "Disable Vi compatibility
 set nocompatible
@@ -34,9 +33,11 @@ set number
 set relativenumber
 set textwidth=79
 set nowrap
+set signcolumn=number
+set foldcolumn=1
 
 "Hides '|' in vertical split
-:set fillchars+=vert:\ 
+set fillchars+=vert:\ 
 
 "Search options
 set path+=**
@@ -46,6 +47,7 @@ set ignorecase
 set smartcase
 
 set cursorline
+set colorcolumn=80
 
 set splitright splitbelow
 
@@ -65,6 +67,8 @@ set history=1000
 set undodir=~/.vim/backup
 set undofile
 set undoreload=10000
+
+set termwinsize=8x0
 
 set wildmenu
 set wildmode=longest:list,full
@@ -130,6 +134,8 @@ nnoremap <leader>fO :Explore<CR>
 
 nnoremap <leader>gd <c-]>
 
+nnoremap <leader>m :terminal<CR>
+
 " added :noh to remove highlight at the end
 nnoremap <leader>so :w<CR>:so<space>%<CR>:noh<CR>
 nnoremap <leader><c-r> :reg<CR>
@@ -165,10 +171,11 @@ command! MakeTags !ctags -R .
 
 "STATUS LINE {{{
 " Clear status line when vimrc is reloaded.
+set ruler
 set statusline=
 
 " Status line left side.
-set statusline+=\ %F\ %n\ %M\ %R
+set statusline+=\ %n\ %F\ %m\ %R
 
 " Use a divider to separate the left side from the right side.
 set statusline+=%=
@@ -205,8 +212,7 @@ syntax on
     "   Ps = 1  -> blinking block (default).
     "   Ps = 2  -> steady block.
     "   Ps = 3  -> blinking underline.
-    "   Ps = 4  -> steady underline.
-    "   Ps = 5  -> blinking bar (xterm).
+    "   Ps = 4  -> steady underline.  "   Ps = 5  -> blinking bar (xterm).
     "   Ps = 6  -> steady bar (xterm).
 let &t_SI = "\e[6 q"
 let &t_SR = "\e[3 q"
@@ -248,7 +254,7 @@ set background=dark
 
 highlight Comment cterm=italic guifg=#CA9EE6
 highlight Folded cterm=bold,italic guifg=#414559 guibg=#EEBEBE
-highlight CursorLine guibg=#51576D
+highlight CursorLine cterm=none guibg=#51576D
 highlight CursorLineNr cterm=bold,italic guifg=#85C1DC guibg=#414559
 highlight LineNr guifg=#414559 guibg=#CA9EE6
 highlight Visual guibg=SlateGray
@@ -256,22 +262,30 @@ highlight Search guifg=#303446 guibg=#F2D5CF
 highlight IncSearch guifg=#303446 guibg=#F2D5CF 
 highlight CurSearch guifg=#303446 guibg=#EA999C 
 highlight Normal guifg=#C6D0F5 guibg=#303446
-highlight StatusLine guibg=#303446 guifg=#CA9EE6
-highlight StatusLineNC guifg=#303446 guibg=#CA9EE6
+highlight StatusLine guibg=#303446 guifg=#EEBEBE
+highlight StatusLineNC guibg=#303446 guifg=#CA9EE6
 highlight Type cterm=bold guifg=#A6D189
 highlight Constant guifg=#F4B8E4
-highlight Special guifg=#F4B8E4
+highlight Special guifg=#E5C890
+highlight Underlined guifg=#E78284
 highlight PreProc guifg=#99D1DB
 highlight Statement guifg=#EEBEBE
 highlight Identifier cterm=bold guifg=#99D1DB
 highlight Error cterm=bold,italic guifg=#F2D5CF guibg=#EA999C
-highlight TabLine guifg=#303446 guibg=#CA9EE6
-highlight TabLineSel cterm=bold,italic guifg=#85C1DC
-highlight TabLineFill guifg=#CA9EE6
+highlight ErrorMsg cterm=bold,italic guifg=#F2D5CF guibg=#EA999C
+highlight TabLine cterm=none guifg=#303446 guibg=#EEBEBE
+highlight TabLineSel cterm=bold,italic guifg=#232634 guibg=#CA9EE6
+highlight TabLineFill guifg=#EEBEBE
+highlight FoldColumn guifg=#737994 guibg=#EEBEBE
+highlight ColorColumn guifg=#414559 guibg=#CA9EE6
 highlight VertSplit guifg=#CA9EE6
 highlight WildMenu cterm=bold guifg=#85C1DC guibg=#303446
-highlight NonText guifg=#CA9EE6
-highlight Title guifg=#EEBEBE
+highlight NonText guifg=#737994
+highlight Title guifg=#232634
+highlight StatusLineTerm guifg=#303446 guibg=#EEBEBE
+highlight StatusLineTermNC cterm=italic guifg=#303446 guibg=#EEBEBE
+highlight MatchParen guifg=#303446 guibg=#EA999C
+
 " }}}
 
 " NICE TO KNOW {{{
