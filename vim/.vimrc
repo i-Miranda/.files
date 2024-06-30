@@ -277,10 +277,10 @@ highlight TabLine cterm=none guifg=#303446 guibg=#EEBEBE
 highlight TabLineSel cterm=bold,italic guifg=#232634 guibg=#CA9EE6
 highlight TabLineFill guifg=#EEBEBE
 highlight FoldColumn guifg=#737994 guibg=#EEBEBE
-highlight ColorColumn guifg=#414559 guibg=#CA9EE6
+highlight ColorColumn guibg=#737994
 highlight VertSplit guifg=#CA9EE6
 highlight WildMenu cterm=bold guifg=#85C1DC guibg=#303446
-highlight NonText guifg=#737994
+highlight NonText guifg=#737994 guibg=#414559
 highlight Title guifg=#232634
 highlight StatusLineTerm guifg=#303446 guibg=#EEBEBE
 highlight StatusLineTermNC cterm=italic guifg=#303446 guibg=#EEBEBE
