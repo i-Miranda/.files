@@ -134,6 +134,8 @@ nnoremap <leader>fO :Explore<CR>
 
 nnoremap <leader>gd <c-]>
 
+map Y y$
+
 nnoremap <leader>m :terminal<CR>
 
 " added :noh to remove highlight at the end
