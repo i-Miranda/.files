@@ -56,7 +56,7 @@ set visualbell
 
 set showcmd
 set showmatch
-set showmode
+" set showmode
 
 "Performance options
 " Screen doesn't update during macro or script execution
@@ -152,6 +152,7 @@ augroup help_vert
     autocmd FileType help wincmd L
     autocmd FileType help set wrap
     autocmd FileType help set linebreak
+    autocmd FileType help set colorcolumn=0
 augroup END
 
 " Display cursorline in active window.
