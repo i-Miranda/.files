@@ -36,8 +36,11 @@ set nowrap
 set signcolumn=number
 set foldcolumn=1
 
+set listchars=trail:%,eol:#
+set list
+
 "Hides '|' in vertical split
-set fillchars+=vert:\ 
+set fillchars+=vert:\
 
 "Search options
 set path+=**
@@ -137,6 +140,10 @@ nnoremap <leader>gd <c-]>
 map Y y$
 
 nnoremap <leader>m :terminal<CR>
+vnoremap <leader>my "*y:terminal<cr>
+
+nnoremap <leader>sl :set list<CR>
+nnoremap <leader>snl :set nolist<CR>
 
 " added :noh to remove highlight at the end
 nnoremap <leader>so :w<CR>:so<space>%<CR>:noh<CR>
@@ -283,11 +290,12 @@ highlight FoldColumn guifg=#737994 guibg=#EEBEBE
 highlight ColorColumn guibg=#737994
 highlight VertSplit guifg=#CA9EE6
 highlight WildMenu cterm=bold guifg=#85C1DC guibg=#303446
-highlight NonText guifg=#737994 guibg=#414559
+highlight NonText guifg=#737994 guibg=#303446
 highlight Title guifg=#232634
 highlight StatusLineTerm guifg=#303446 guibg=#EEBEBE
 highlight StatusLineTermNC cterm=italic guifg=#303446 guibg=#EEBEBE
 highlight MatchParen guifg=#303446 guibg=#EA999C
+
 
 " }}}
 
