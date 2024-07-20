@@ -85,15 +85,15 @@ nnoremap <leader>+ <c-a>
 nnoremap <leader>- <c-x>
 
 "Center cursorline
-nnoremap j jzz
-nnoremap k kzz
+nnoremap j jzzgM
+nnoremap k kzzgM
 nnoremap n nzzzv
 nnoremap N Nzzzv
-nnoremap <s-h> <s-h>zz
-vnoremap <s-h> <s-h>zz
-nnoremap <s-l> <s-l>zz
-vnoremap <s-l> <s-l>zz
-nnoremap gg ggzzzv
+nnoremap <s-h> <s-h>zzgM
+vnoremap <s-h> <s-h>zzgM
+nnoremap <s-l> <s-l>zzgM
+vnoremap <s-l> <s-l>zzgM
+nnoremap gg ggzzzvgM
 
 nnoremap o o<esc>
 nnoremap O O<esc>
@@ -207,7 +207,7 @@ set laststatus=2
 " PLUGINS {{{
 runtime ftplugin/man.vim
 " }}}
-"
+
 " netrw {{{
 " FILE BROWSING:
 " Tweaks for browsing:
