@@ -22,7 +22,7 @@ set shiftwidth=4
 set shiftround
 set tabstop=4
 set smarttab
-set expandtab
+" set expandtab
 
 "Enable filetype detection
 filetype on
@@ -37,7 +37,7 @@ set signcolumn=number
 set foldcolumn=1
 
 set listchars=trail:%,eol:#
-set list
+set nolist
 
 "Hides '|' in vertical split
 set fillchars+=vert:\
@@ -71,8 +71,6 @@ set undodir=~/.vim/backup
 set undofile
 set undoreload=10000
 
-set termwinsize=8x0
-
 set wildmenu
 set wildmode=longest:list,full
 set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
@@ -92,7 +90,9 @@ nnoremap k kzz
 nnoremap n nzzzv
 nnoremap N Nzzzv
 nnoremap <s-h> <s-h>zz
+vnoremap <s-h> <s-h>zz
 nnoremap <s-l> <s-l>zz
+vnoremap <s-l> <s-l>zz
 nnoremap gg ggzzzv
 
 nnoremap o o<esc>
@@ -106,6 +106,8 @@ nnoremap <leader>nh :nohlsearch<CR>
 "Window navigation
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
+nnoremap <c-H> <c-w>h:vert res 9999<CR>
+nnoremap <c-L> <c-w>l:vert res 9999<CR>
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
@@ -140,7 +142,8 @@ nnoremap <leader>gd <c-]>
 map Y y$
 
 nnoremap <leader>m :terminal<CR>
-vnoremap <leader>my "*y:terminal<cr>
+vnoremap <leader>my "*y:terminal<CR>
+nnoremap <leader>mvr :find ~/.vim/vimrc<CR>
 
 nnoremap <leader>sl :set list<CR>
 nnoremap <leader>snl :set nolist<CR>
@@ -154,7 +157,11 @@ inoremap jj <esc>
 
 "VIMSCRIPT {{{
 augroup filetype_vim
-    autocmd filetype vim setlocal foldmethod=marker
+    autocmd FileType vim setlocal foldmethod=marker
+augroup end
+
+augroup filetype_man
+    autocmd FileType man wincmd L
 augroup end
 
 augroup help_vert
@@ -197,6 +204,10 @@ set statusline+=\ %y\ ascii:\%b\ hex:\0x%B\ %l\:%c\ %p%%
 set laststatus=2
 " }}}
 
+" PLUGINS {{{
+runtime ftplugin/man.vim
+" }}}
+"
 " netrw {{{
 " FILE BROWSING:
 " Tweaks for browsing:
@@ -214,7 +225,7 @@ let g:netrw_list_hide=netrw_gitignore#Hide()
 " }}}
 
 " STYLE {{{
-syntax on
+syntax enable
 
 " Use a line cursor within insert mode and a block cursor everywhere else.
     "   Reference chart of values:
@@ -262,40 +273,43 @@ set background=dark
 " mantle = #292C3C
 " crust = #232634
 
+highlight ColorColumn guibg=#737994
 highlight Comment cterm=italic guifg=#CA9EE6
-highlight Folded cterm=bold,italic guifg=#414559 guibg=#EEBEBE
+highlight Constant guifg=#F4B8E4
+highlight CurSearch guifg=#303446 guibg=#EA999C 
 highlight CursorLine cterm=none guibg=#51576D
 highlight CursorLineNr cterm=bold,italic guifg=#85C1DC guibg=#414559
-highlight LineNr guifg=#414559 guibg=#CA9EE6
-highlight Visual guibg=SlateGray
-highlight Search guifg=#303446 guibg=#F2D5CF
-highlight IncSearch guifg=#303446 guibg=#F2D5CF 
-highlight CurSearch guifg=#303446 guibg=#EA999C 
-highlight Normal guifg=#C6D0F5 guibg=#303446
-highlight StatusLine guibg=#303446 guifg=#EEBEBE
-highlight StatusLineNC guibg=#303446 guifg=#CA9EE6
-highlight Type cterm=bold guifg=#A6D189
-highlight Constant guifg=#F4B8E4
-highlight Special guifg=#E5C890
-highlight Underlined guifg=#E78284
-highlight PreProc guifg=#99D1DB
-highlight Statement guifg=#EEBEBE
-highlight Identifier cterm=bold guifg=#99D1DB
 highlight Error cterm=bold,italic guifg=#F2D5CF guibg=#EA999C
 highlight ErrorMsg cterm=bold,italic guifg=#F2D5CF guibg=#EA999C
-highlight TabLine cterm=none guifg=#303446 guibg=#EEBEBE
-highlight TabLineSel cterm=bold,italic guifg=#232634 guibg=#CA9EE6
-highlight TabLineFill guifg=#EEBEBE
 highlight FoldColumn guifg=#737994 guibg=#EEBEBE
-highlight ColorColumn guibg=#737994
-highlight VertSplit guifg=#CA9EE6
-highlight WildMenu cterm=bold guifg=#85C1DC guibg=#303446
+highlight Folded cterm=bold,italic guifg=#414559 guibg=#EEBEBE
+highlight Identifier cterm=bold guifg=#99D1DB
+highlight IncSearch guifg=#303446 guibg=#F2D5CF 
+highlight LineNr guifg=#414559 guibg=#CA9EE6
+highlight MatchParen guifg=#303446 guibg=#EA999C
 highlight NonText guifg=#737994 guibg=#303446
-highlight Title guifg=#232634
+highlight Normal guifg=#C6D0F5 guibg=#303446
+highlight Pmenu guifg=#414559 guibg=#CA9EE6
+highlight PmenuSel guifg=#303446 guibg=#EEBEBE
+highlight PmenuSBar guibg=#414559
+highlight PmenuThumb guibg=#85C1DC 
+highlight PreProc guifg=#99D1DB
+highlight Search guifg=#303446 guibg=#F2D5CF
+highlight Special guifg=#E5C890
+highlight Statement guifg=#EEBEBE
+highlight StatusLine guibg=#303446 guifg=#EEBEBE
+highlight StatusLineNC guibg=#303446 guifg=#CA9EE6
 highlight StatusLineTerm guifg=#303446 guibg=#EEBEBE
 highlight StatusLineTermNC cterm=italic guifg=#303446 guibg=#EEBEBE
-highlight MatchParen guifg=#303446 guibg=#EA999C
-
+highlight TabLine cterm=none guifg=#303446 guibg=#EEBEBE
+highlight TabLineFill guifg=#EEBEBE
+highlight TabLineSel cterm=bold,italic guifg=#232634 guibg=#CA9EE6
+highlight Title guifg=#232634
+highlight Type cterm=bold guifg=#A6D189
+highlight Underlined guifg=#E78284
+highlight VertSplit guifg=#CA9EE6
+highlight Visual guibg=SlateGray
+highlight WildMenu cterm=bold guifg=#85C1DC guibg=#303446
 
 " }}}
 
