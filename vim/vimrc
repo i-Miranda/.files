@@ -79,21 +79,16 @@ set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 nnoremap <space> <Nop>
 let mapleader = " "
 
-"Increment and Decrement numbers
-nnoremap <leader>+ <c-a>
-"conflicts with :split shortcut
-nnoremap <leader>- <c-x>
-
 "Center cursorline
-nnoremap j jzzgM
-nnoremap k kzzgM
+nnoremap j jzz
+nnoremap k kzz
 nnoremap n nzzzv
 nnoremap N Nzzzv
-nnoremap <s-h> <s-h>zzgM
-vnoremap <s-h> <s-h>zzgM
-nnoremap <s-l> <s-l>zzgM
-vnoremap <s-l> <s-l>zzgM
-nnoremap gg ggzzzvgM
+nnoremap <s-h> <s-h>zz
+vnoremap <s-h> <s-h>zz
+nnoremap <s-l> <s-l>zz
+vnoremap <s-l> <s-l>zz
+nnoremap gg ggzzzv
 
 nnoremap o o<esc>
 nnoremap O O<esc>
