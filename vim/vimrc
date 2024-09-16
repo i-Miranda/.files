@@ -14,15 +14,15 @@ set fileencodings=utf-8
 
 "Disable Vi compatibility
 set nocompatible
-set backspace=indent,eol,start
 
 "Indentation
 set autoindent
+"set cindent
 set shiftwidth=4
 set shiftround
 set tabstop=4
 set smarttab
-" set expandtab
+"set expandtab
 
 "Enable filetype detection
 filetype on
@@ -31,7 +31,7 @@ filetype indent on
 
 set number
 set relativenumber
-set textwidth=79
+set textwidth=80
 set nowrap
 set signcolumn=number
 set foldcolumn=1
@@ -59,7 +59,7 @@ set visualbell
 
 set showcmd
 set showmatch
-" set showmode
+set showmode
 
 "Performance options
 " Screen doesn't update during macro or script execution
@@ -84,14 +84,16 @@ nnoremap j jzz
 nnoremap k kzz
 nnoremap n nzzzv
 nnoremap N Nzzzv
-nnoremap <s-h> <s-h>zz
-vnoremap <s-h> <s-h>zz
-nnoremap <s-l> <s-l>zz
-vnoremap <s-l> <s-l>zz
+nnoremap H Hzz
+vnoremap H Hzz
+nnoremap L Lzz
+vnoremap L Lzz
 nnoremap gg ggzzzv
 
 nnoremap o o<esc>
 nnoremap O O<esc>
+nnoremap <leader>o mojdd`o
+nnoremap <leader>O mOkdd`O
 
 nnoremap <leader>cc ~h
 vnoremap <leader>cc ~
@@ -114,6 +116,8 @@ nnoremap <leader>k <c-w>_
 nnoremap <leader><space> <c-w>=
 nnoremap <leader>q :q<CR>
 
+nnoremap <leader>ee :enew<CR>
+
 nnoremap <leader>bb :rightb vnew<CR>
 nnoremap <leader>bn :bnext<CR>
 nnoremap <leader>bp :bprev<CR>
@@ -129,23 +133,25 @@ nnoremap <leader>to :tabonly<CR>
 
 nnoremap <leader>ff :find<space>
 nnoremap <leader>fb :ls<CR>:b<space>
-nnoremap <leader>fo :Lexplore<CR>:wincmd L<CR>21<c-w><
+nnoremap <leader>fo :Lexplore<CR>:wincmd L<CR>21<c-w><CR>
 nnoremap <leader>fO :Explore<CR>
+nnoremap <leader>fm :marks<CR>:normal! `
+nnoremap <leader>fr :reg<CR>:normal! "
+nnoremap <leader>ft :tags<CR>
+nnoremap <leader>fu :undolist<CR>:u<space>
+nnoremap <leader>fv :find ~/.vim/vimrc<CR>
 
 nnoremap <leader>gd <c-]>
 
 map Y y$
 
-nnoremap <leader>m :terminal<CR>
-vnoremap <leader>my "*y:terminal<CR>
-nnoremap <leader>mvr :find ~/.vim/vimrc<CR>
-
 nnoremap <leader>sl :set list<CR>
 nnoremap <leader>snl :set nolist<CR>
+nnoremap <leader>sf :set foldenable<CR>
+nnoremap <leader>snf :set nofoldenable<CR>
 
 " added :noh to remove highlight at the end
 nnoremap <leader>so :w<CR>:so<space>%<CR>:noh<CR>
-nnoremap <leader><c-r> :reg<CR>
 
 inoremap jj <esc>
 " }}}
@@ -153,17 +159,34 @@ inoremap jj <esc>
 "VIMSCRIPT {{{
 augroup filetype_vim
     autocmd FileType vim setlocal foldmethod=marker
-augroup end
+augroup END
+
+augroup filetype_c
+    autocmd FileType c setlocal foldmethod=syntax
+    autocmd FileType c setlocal nofoldenable
+augroup END
 
 augroup filetype_man
     autocmd FileType man wincmd L
-augroup end
+    autocmd FileType man set wrap
+    autocmd FileType man set linebreak
+    autocmd FileType man set colorcolumn=0
+    autocmd FileType man tabnew %
+    autocmd FileType man tabprev 
+augroup END
+
+augroup filetype_netrw
+	autocmd FileType netrw set number
+	autocmd FileType netrw set relativenumber
+augroup END
 
 augroup help_vert
     autocmd FileType help wincmd L
     autocmd FileType help set wrap
     autocmd FileType help set linebreak
     autocmd FileType help set colorcolumn=0
+    autocmd FileType help tabnew %
+    autocmd FileType help tabprev 
 augroup END
 
 " Display cursorline in active window.
@@ -309,7 +332,7 @@ highlight WildMenu cterm=bold guifg=#85C1DC guibg=#303446
 " }}}
 
 " NICE TO KNOW {{{
-" set omnifunc=syntaxcomplete#Complete
+set omnifunc=syntaxcomplete#Complete
 " AUTOCOMPLETE:
     " The good stuff is documented in |ins-completion|
     " HIGHLIGHTS:
