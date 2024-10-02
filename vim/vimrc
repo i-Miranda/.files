@@ -14,6 +14,8 @@ set fileencodings=utf-8
 
 "Disable Vi compatibility
 set nocompatible
+set	backspace=indent,eol,start
+set hidden
 
 "Indentation
 set autoindent
@@ -89,6 +91,8 @@ vnoremap H Hzz
 nnoremap L Lzz
 vnoremap L Lzz
 nnoremap gg ggzzzv
+nnoremap gd gdzzzv:nohlsearch<CR>
+nnoremap gD gDzzzv:nohlsearch<CR>
 
 nnoremap o o<esc>
 nnoremap O O<esc>
@@ -204,6 +208,15 @@ command! MakeTags !ctags -R .
 
 " }}}
 
+" C SPECIFIC {{{
+" this isn't working
+syn keyword cType t_list
+" this is
+let c_functions = 1
+let c_function_pointers = 1
+let c_syntax_for_h = 1
+" }}}
+	
 "STATUS LINE {{{
 " Clear status line when vimrc is reloaded.
 set ruler
