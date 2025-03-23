@@ -65,7 +65,7 @@ set showmode
 
 "Performance options
 " Screen doesn't update during macro or script execution
-set lazyredraw
+"set lazyredraw
 
 set history=1000
 
@@ -135,7 +135,8 @@ nnoremap <leader>tp :tabprev<CR>
 nnoremap <leader>tq :tabclose<CR>
 nnoremap <leader>to :tabonly<CR>
 
-nnoremap <leader>ff :find<space>
+nnoremap <leader>ff :FZF<CR>
+nnoremap <leader>fz :find<space>
 nnoremap <leader>fb :ls<CR>:b<space>
 nnoremap <leader>fo :Lexplore<CR>:wincmd L<CR>21<c-w><CR>
 nnoremap <leader>fO :Explore<CR>
@@ -145,12 +146,12 @@ nnoremap <leader>ft :tags<CR>
 nnoremap <leader>fu :undolist<CR>:u<space>
 nnoremap <leader>fv :find ~/.vim/vimrc<CR>
 
-nnoremap <leader>gd <c-]>
+nnoremap <leader>gd *<c-]>n:nohl<CR>zz
 
 map Y y$
 
-nnoremap <leader>sl :set list<CR>
-nnoremap <leader>snl :set nolist<CR>
+nnoremap <leader>sl :bufdo execute "set list"<CR>
+nnoremap <leader>snl :bufdo execute "set nolist"<CR>
 nnoremap <leader>sf :set foldenable<CR>
 nnoremap <leader>snf :set nofoldenable<CR>
 
@@ -168,6 +169,7 @@ augroup END
 augroup filetype_c
     autocmd FileType c setlocal foldmethod=syntax
     autocmd FileType c setlocal nofoldenable
+	"set tags+=/usr/local/include/**/tags
 augroup END
 
 augroup filetype_man
@@ -205,7 +207,6 @@ command! MakeTags !ctags -R .
     " - Use ^] to jump to tag under cursor
     " - Use g^] for ambiguous tags
     " - Use t^ to jump back up the tag stack
-
 " }}}
 
 " C SPECIFIC {{{
@@ -236,6 +237,7 @@ set laststatus=2
 " }}}
 
 " PLUGINS {{{
+set rtp+=/usr/local/opt/fzf
 runtime ftplugin/man.vim
 " }}}
 
