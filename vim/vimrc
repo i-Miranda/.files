@@ -218,6 +218,13 @@ let c_function_pointers = 1
 let c_syntax_for_h = 1
 " }}}
 	
+" 42 SPECIFIC {{{
+let g:user42 = 'ivmirand'
+let g:mail42 = 'ivmirand@student.42madrid.com'
+
+nnoremap <leader>std :Stdheader<CR>
+" }}}
+
 "STATUS LINE {{{
 " Clear status line when vimrc is reloaded.
 set ruler
