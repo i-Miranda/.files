@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =6
+let g:netrw_dirhist_6='/Users/ivan/Developer/GitHub/42/crss/cpp00-04/cpp01/ex03/src'
+let g:netrw_dirhist_5='/Users/ivan/Developer/GitHub/42/crss/cpp00-04/cpp01/ex03/inc'
+let g:netrw_dirhist_4='/Users/ivan/Developer/GitHub/42/crss/cpp00-04/cpp01/ex03'
+let g:netrw_dirhist_3='/Users/ivan/Developer/GitHub/42/crss/cpp00-04/cpp01/ex03/src'
+let g:netrw_dirhist_2='/Users/ivan/Developer/GitHub/42/crss/cpp00-04/cpp01/ex03'
+let g:netrw_dirhist_1='/Users/ivan/Developer/GitHub/42/crss/cpp00-04/cpp01/ex03/inc'
+let g:netrw_dirhist_0='/Users/ivan/Developer/GitHub/42/crss/cpp00-04/cpp01/ex03/src'
+let g:netrw_dirhist_9='/Users/ivan/Developer/GitHub/42/crss/cpp00-04/cpp01/ex03'
+let g:netrw_dirhist_8='/Users/ivan/Developer/GitHub/42/crss/cpp00-04/cpp01/ex03/src'
+let g:netrw_dirhist_7='/Users/ivan/Developer/GitHub/42/crss/cpp00-04/cpp01/ex03/inc'
