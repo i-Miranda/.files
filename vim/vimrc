@@ -14,7 +14,7 @@ set fileencodings=utf-8
 
 "Disable Vi compatibility
 set nocompatible
-set	backspace=indent,eol,start
+set backspace=indent,eol,start
 set hidden
 
 "Indentation
@@ -150,10 +150,10 @@ nnoremap <leader>gd *<c-]>n:nohl<CR>zz
 
 map Y y$
 
-nnoremap <leader>sl :bufdo execute "set list"<CR>
-nnoremap <leader>snl :bufdo execute "set nolist"<CR>
-nnoremap <leader>sf :set foldenable<CR>
-nnoremap <leader>snf :set nofoldenable<CR>
+nnoremap <leader>sl m1:bufdo execute "set list"<CR>'1zz
+nnoremap <leader>snl m1:bufdo execute "set nolist"<CR>'1zz
+nnoremap <leader>sf :set foldenable<CR>zz
+nnoremap <leader>snf :set nofoldenable<CR>zz
 
 " added :noh to remove highlight at the end
 nnoremap <leader>so :w<CR>:so<space>%<CR>:noh<CR>
@@ -172,13 +172,19 @@ augroup filetype_c
 	"set tags+=/usr/local/include/**/tags
 augroup END
 
+augroup filetype_cpp
+    autocmd FileType cpp setlocal foldmethod=syntax
+    autocmd FileType cpp setlocal nofoldenable
+	"set tags+=/usr/local/include/**/tags
+augroup END
+
 augroup filetype_man
     autocmd FileType man wincmd L
     autocmd FileType man set wrap
     autocmd FileType man set linebreak
     autocmd FileType man set colorcolumn=0
     autocmd FileType man tabnew %
-    autocmd FileType man tabprev 
+    autocmd FileType man tabprev
 augroup END
 
 augroup filetype_netrw
@@ -217,7 +223,7 @@ let c_functions = 1
 let c_function_pointers = 1
 let c_syntax_for_h = 1
 " }}}
-	
+
 " 42 SPECIFIC {{{
 let g:user42 = 'ivmirand'
 let g:mail42 = 'ivmirand@student.42madrid.com'
@@ -251,7 +257,7 @@ runtime ftplugin/man.vim
 " netrw {{{
 " FILE BROWSING:
 " Tweaks for browsing:
-let g:netrw_banner=0  "disable banner
+" let g:netrw_banner=0  "disable banner
 let g:netrw_browse_split=4 "open in prior window
 let g:netrw_altv=0 "open splits to the left
 let g:netrw_liststyle=3 "tree view
